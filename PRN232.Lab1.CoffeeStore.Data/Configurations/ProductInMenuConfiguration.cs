@@ -1,0 +1,28 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PRN232.Lab1.CoffeeStore.Data.Entities;
+
+namespace PRN232.Lab1.CoffeeStore.Data.Configurations
+{
+    public class ProductInMenuConfiguration : IEntityTypeConfiguration<ProductInMenu>
+
+    {
+        public void Configure(EntityTypeBuilder<ProductInMenu> builder)
+        {
+            builder.ToTable("ProductInMenu");
+            builder.HasKey(pm => pm.Id);
+            builder.Property(pm => pm.ProductId);
+            builder.Property(pm => pm.MenuId);
+            builder.Property(pm => pm.Quantity)
+                .IsRequired();
+            builder.HasOne(pm => pm.Product)
+                .WithMany()
+                .HasForeignKey(pm => pm.ProductId)
+                .OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(pm => pm.Menu)
+                .WithMany()
+                .HasForeignKey(pm => pm.MenuId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
+    }
+}

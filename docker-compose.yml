@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserverdocker
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Nam@15112003
+      - MSSQL_PID=Evaluation
+    ports:
+      - "1433:1433"
+    networks:
+      - mynetwork
+
+  coffeestore-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coffeestoreapi
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

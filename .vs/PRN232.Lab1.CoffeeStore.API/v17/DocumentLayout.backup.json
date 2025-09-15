@@ -1,0 +1,280 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|solutionrelative:prn232.lab1.coffeestore.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|solutionrelative:prn232.lab1.coffeestore.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|solutionrelative:prn232.lab1.coffeestore.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.api\\controllers\\menuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|solutionrelative:prn232.lab1.coffeestore.api\\controllers\\menuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EC8773D-6D21-4687-9F85-F10C4A9C5250}|PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API.csproj|solutionrelative:prn232.lab1.coffeestore.api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\entities\\productinmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\entities\\productinmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\coffestoredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\coffestoredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\configurations\\categoryconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\configurations\\categoryconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\configurations\\productconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\configurations\\productconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\configurations\\productinmenuconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\configurations\\productinmenuconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\configurations\\menuconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\configurations\\menuconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\entities\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\entities\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|d:\\semester 8\\prn232\\lab\\01\\prn232.lab1.coffeestore.api\\prn232.lab1.coffeestore.data\\migrations\\20250909094923_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E95A960-3A6F-420C-9761-197B87CC9DD0}|PRN232.Lab1.CoffeeStore.Data\\PRN232.Lab1.CoffeeStore.Data.csproj|solutionrelative:prn232.lab1.coffeestore.data\\migrations\\20250909094923_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.API\\appsettings.Development.json",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\appsettings.Development.json",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.API\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-15T15:28:31.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\appsettings.json",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.API\\appsettings.json",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\appsettings.json",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-12T06:32:58.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MenusController.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\Controllers\\MenusController.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.API\\Controllers\\MenusController.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\Controllers\\MenusController.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.API\\Controllers\\MenusController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAuwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T06:04:37.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\Program.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.API\\Program.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\Program.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.API\\Program.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T05:49:20.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Repositories\\ProductRepository.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwCYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T05:47:09.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.API\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.API\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.API\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwDQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T05:43:25.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductInMenuConfiguration.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductInMenuConfiguration.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductInMenuConfiguration.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductInMenuConfiguration.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductInMenuConfiguration.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:33:54.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CategoryConfiguration.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\CategoryConfiguration.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\CategoryConfiguration.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\CategoryConfiguration.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\CategoryConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:32:30.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductConfiguration.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductConfiguration.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductConfiguration.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductConfiguration.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\ProductConfiguration.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:22:38.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductInMenu.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\ProductInMenu.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Entities\\ProductInMenu.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\ProductInMenu.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Entities\\ProductInMenu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:21:17.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Entities\\Product.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\Product.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Entities\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:14:12.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CoffeStoreDbContext.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\CoffeStoreDbContext.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\CoffeStoreDbContext.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\CoffeStoreDbContext.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\CoffeStoreDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T05:36:50.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MenuConfiguration.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\MenuConfiguration.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\MenuConfiguration.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Configurations\\MenuConfiguration.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Configurations\\MenuConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:48:39.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20250909094923_Initial.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Migrations\\20250909094923_Initial.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Migrations\\20250909094923_Initial.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Migrations\\20250909094923_Initial.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Migrations\\20250909094923_Initial.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:49:23.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Entities\\Category.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\Category.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:14:11.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\Menu.cs",
+              "RelativeDocumentMoniker": "PRN232.Lab1.CoffeeStore.Data\\Entities\\Menu.cs",
+              "ToolTip": "D:\\Semester 8\\PRN232\\Lab\\01\\PRN232.Lab1.CoffeeStore.API\\PRN232.Lab1.CoffeeStore.Data\\Entities\\Menu.cs",
+              "RelativeToolTip": "PRN232.Lab1.CoffeeStore.Data\\Entities\\Menu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:16:55.427Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

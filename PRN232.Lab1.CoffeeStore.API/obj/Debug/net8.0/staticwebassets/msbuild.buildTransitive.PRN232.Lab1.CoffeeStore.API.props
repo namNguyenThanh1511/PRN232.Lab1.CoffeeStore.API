@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\PRN232.Lab1.CoffeeStore.API.props" />
+</Project>
