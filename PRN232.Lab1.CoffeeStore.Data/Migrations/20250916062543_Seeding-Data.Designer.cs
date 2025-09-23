@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PRN232.Lab1.CoffeeStore.Data;
 
@@ -11,9 +12,11 @@ using PRN232.Lab1.CoffeeStore.Data;
 namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 {
     [DbContext(typeof(CoffeStoreDbContext))]
-    partial class CoffeStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250916062543_Seeding-Data")]
+    partial class SeedingData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -408,7 +411,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
             modelBuilder.Entity("PRN232.Lab1.CoffeeStore.Data.Entities.Product", b =>
                 {
                     b.HasOne("PRN232.Lab1.CoffeeStore.Data.Entities.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.SetNull);
 
@@ -418,33 +421,18 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
             modelBuilder.Entity("PRN232.Lab1.CoffeeStore.Data.Entities.ProductInMenu", b =>
                 {
                     b.HasOne("PRN232.Lab1.CoffeeStore.Data.Entities.Menu", "Menu")
-                        .WithMany("ProductInMenus")
+                        .WithMany()
                         .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("PRN232.Lab1.CoffeeStore.Data.Entities.Product", "Product")
-                        .WithMany("ProductInMenus")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Menu");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("PRN232.Lab1.CoffeeStore.Data.Entities.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("PRN232.Lab1.CoffeeStore.Data.Entities.Menu", b =>
-                {
-                    b.Navigation("ProductInMenus");
-                });
-
-            modelBuilder.Entity("PRN232.Lab1.CoffeeStore.Data.Entities.Product", b =>
-                {
-                    b.Navigation("ProductInMenus");
                 });
 #pragma warning restore 612, 618
         }

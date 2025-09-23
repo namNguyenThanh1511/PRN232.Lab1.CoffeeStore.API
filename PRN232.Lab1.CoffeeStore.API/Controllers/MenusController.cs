@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PRN232.Lab1.CoffeeStore.Data;
+
 using PRN232.Lab1.CoffeeStore.Data.Entities;
+using PRN232.Lab1.CoffeeStore.Service;
+using PRN232.Lab1.CoffeeStore.Service.Models;
 
 namespace PRN232.Lab1.CoffeeStore.API.Controllers
 {
@@ -9,74 +10,81 @@ namespace PRN232.Lab1.CoffeeStore.API.Controllers
     [ApiController]
     public class MenusController : ControllerBase
     {
-        private readonly CoffeStoreDbContext _context;
+        private readonly MenuService _menuService;
 
-        public MenusController(CoffeStoreDbContext context)
+        public MenusController(MenuService menuService)
         {
-            _context = context;
+            _menuService = menuService;
         }
 
-        // GET: api/Menus
+        // GET: api/menus
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Menu>>> GetMenus()
+        public async Task<ActionResult<IEnumerable<MenuResponse>>> GetMenus()
         {
-            return await _context.Menus.ToListAsync();
+            var menus = await _menuService.GetAllMenusAsync();
+            return Ok(menus);
         }
 
-        // GET: api/Menus/5
+        // GET: api/menus/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Menu>> GetMenu(Guid id)
         {
-            var menu = await _context.Menus.FindAsync(id);
-
+            var menu = await _menuService.GetMenuByIdAsync(id);
             if (menu == null)
             {
                 return NotFound();
             }
-
-            return menu;
+            return Ok(menu);
         }
 
-        // PUT: api/Menus/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMenu(Guid id, Menu menu)
+        // POST: api/menus
+        [HttpPost]
+        public async Task<ActionResult<MenuResponse>> PostMenu(MenuCreationRequest request)
         {
-            //find existing menu
-            var existMenu = await _context.Menus.FirstOrDefaultAsync(m => m.Id == id);
-            existMenu.Name = menu.Name;
-            existMenu.FromDate = menu.FromDate;
-            existMenu.ToDate = menu.ToDate;
+            if (request == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            return await _menuService.AddMenuAsync(request);
+        }
 
-            _context.Menus.Update(existMenu);
-            await _context.SaveChangesAsync();
+        // PUT: api/menus/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutMenu(Guid id, MenuUpdationRequest request)
+        {
+            try
+            {
+                await _menuService.UpdateMenuAsync(id, request);
+            }
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             return NoContent();
         }
 
-        // POST: api/Menus
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Menu>> PostMenu(Menu menu)
-        {
-            _context.Menus.Add(menu);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetMenu", new { id = menu.Id }, menu);
-        }
-
-        // DELETE: api/Menus/5
+        // DELETE: api/menus/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMenu(Guid id)
         {
-            var menu = await _context.Menus.FindAsync(id);
-            if (menu == null)
+            try
             {
-                return NotFound();
+                await _menuService.DeleteMenuAsync(id);
             }
-
-            _context.Menus.Remove(menu);
-            await _context.SaveChangesAsync();
-
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(knfEx.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             return NoContent();
         }
     }

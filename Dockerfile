@@ -4,7 +4,9 @@ WORKDIR /src
 
 # Copy tất cả các file csproj trước để tối ưu cache
 COPY ["PRN232.Lab1.CoffeeStore.API/PRN232.Lab1.CoffeeStore.API.csproj", "PRN232.Lab1.CoffeeStore.API/"]
+COPY ["PRN232.Lab1.CoffeeStore.Service/PRN232.Lab1.CoffeeStore.Service.csproj", "PRN232.Lab1.CoffeeStore.Service/"]
 COPY ["PRN232.Lab1.CoffeeStore.Data/PRN232.Lab1.CoffeeStore.Data.csproj", "PRN232.Lab1.CoffeeStore.Data/"]
+
 
 # Restore dependencies
 RUN dotnet restore "PRN232.Lab1.CoffeeStore.API/PRN232.Lab1.CoffeeStore.API.csproj"

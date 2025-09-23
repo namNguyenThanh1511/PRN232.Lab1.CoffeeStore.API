@@ -21,8 +21,12 @@ namespace PRN232.Lab1.CoffeeStore.Data.Configurations
                 .HasMaxLength(1000);
             builder.Property(p => p.CategoryId);
             builder.HasOne(p => p.Category)
-                .WithMany()
+                .WithMany(p => p.Products)
                 .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull);
+            builder.HasMany(p => p.ProductInMenus)
+                .WithOne(pm => pm.Product)
+                .HasForeignKey(pm => pm.ProductId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }

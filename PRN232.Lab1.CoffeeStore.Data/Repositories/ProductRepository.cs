@@ -1,40 +1,64 @@
-﻿namespace PRN232.Lab1.CoffeeStore.Data.Repositories
+﻿using Microsoft.EntityFrameworkCore;
+using PRN232.Lab1.CoffeeStore.Data.Entities;
+
+namespace PRN232.Lab1.CoffeeStore.Data.Repositories
 {
     public class ProductRepository
     {
         private readonly CoffeStoreDbContext _context;
-        public ProductRepository() { }
+
         public ProductRepository(CoffeStoreDbContext context)
         {
             _context = context;
         }
-        // Implement CRUD operations for Product entity here
 
-        public IEnumerable<Entities.Product> GetAllProducts()
+        // Get all products with category
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            return _context.Products.ToList();
+            return await _context.Products
+                .Include(p => p.Category)
+                .ToListAsync();
         }
-        public Entities.Product? GetProductById(Guid id)
+
+        // Get product by id with category
+        public async Task<Product?> GetProductByIdAsync(Guid id)
         {
-            return _context.Products.Find(id);
+            return await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductInMenus)
+                    .ThenInclude(pm => pm.Menu)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
-        public void AddProduct(Entities.Product product)
+
+        // Add product
+        public async Task<Product> AddProductAsync(Product product)
         {
-            _context.Products.Add(product);
-            _context.SaveChanges();
+            var createdProduct = await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
+
+            // Load lại Category
+            await _context.Entry(createdProduct.Entity)
+                          .Reference(p => p.Category)
+                          .LoadAsync();
+
+            return createdProduct.Entity;
         }
-        public void UpdateProduct(Entities.Product product)
+
+        // Update product
+        public async Task UpdateProductAsync(Product product)
         {
             _context.Products.Update(product);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
-        public void DeleteProduct(Guid id)
+
+        // Delete product
+        public async Task DeleteProductAsync(Guid id)
         {
-            var product = _context.Products.Find(id);
+            var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
                 _context.Products.Remove(product);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }

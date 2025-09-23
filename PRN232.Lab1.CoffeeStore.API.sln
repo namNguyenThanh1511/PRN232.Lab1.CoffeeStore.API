@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN232.Lab1.CoffeeStore.API", "PRN232.Lab1.CoffeeStore.API\PRN232.Lab1.CoffeeStore.API.csproj", "{8EC8773D-6D21-4687-9F85-F10C4A9C5250}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN232.Lab1.CoffeeStore.Data", "PRN232.Lab1.CoffeeStore.Data\PRN232.Lab1.CoffeeStore.Data.csproj", "{5E95A960-3A6F-420C-9761-197B87CC9DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRN232.Lab1.CoffeeStore.Service", "PRN232.Lab1.CoffeeStore.Service\PRN232.Lab1.CoffeeStore.Service.csproj", "{793A31F8-3F57-4CCA-A94A-ED5EE099435A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5E95A960-3A6F-420C-9761-197B87CC9DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E95A960-3A6F-420C-9761-197B87CC9DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E95A960-3A6F-420C-9761-197B87CC9DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793A31F8-3F57-4CCA-A94A-ED5EE099435A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793A31F8-3F57-4CCA-A94A-ED5EE099435A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793A31F8-3F57-4CCA-A94A-ED5EE099435A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793A31F8-3F57-4CCA-A94A-ED5EE099435A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

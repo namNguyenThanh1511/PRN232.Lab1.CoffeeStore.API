@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PRN232.Lab1.CoffeeStore.Data;
 using PRN232.Lab1.CoffeeStore.Data.Repositories;
+using PRN232.Lab1.CoffeeStore.Service;
 
 namespace PRN232.Lab1.CoffeeStore.API
 {
@@ -20,24 +21,33 @@ namespace PRN232.Lab1.CoffeeStore.API
 
             //configure database connection string
             builder.Services.AddDbContext<CoffeStoreDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeStoreDB_Docker")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeStoreDB"),
+                                    sqlOptions => sqlOptions.EnableRetryOnFailure())
+            );
 
+            var connectionString = builder.Configuration.GetConnectionString("CoffeeStoreDB");
 
             builder.Services.AddScoped<ProductRepository>();
+            builder.Services.AddScoped<MenuRepository>();
+
+
+            builder.Services.AddScoped<ProductService>();
+            builder.Services.AddScoped<MenuService>();
+
+
 
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
+
+            using (var scope = app.Services.CreateScope())
             {
-                using (var scope = app.Services.CreateScope())
+                var db = scope.ServiceProvider.GetRequiredService<CoffeStoreDbContext>();
+                if (db.Database.GetPendingMigrations().Any()) //only migrate if there are any new migrate file
                 {
-                    var db = scope.ServiceProvider.GetRequiredService<CoffeStoreDbContext>();
-                    if (db.Database.GetPendingMigrations().Any()) //only migrate if there are any new migrate file
-                    {
-                        db.Database.Migrate();
-                    }
+                    db.Database.Migrate();
                 }
             }
+
 
 
             // Configure the HTTP request pipeline.

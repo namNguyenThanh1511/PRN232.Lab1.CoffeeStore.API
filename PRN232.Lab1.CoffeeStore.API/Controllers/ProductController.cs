@@ -1,78 +1,101 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PRN232.Lab1.CoffeeStore.Data.Entities;
+using PRN232.Lab1.CoffeeStore.Service;
+using PRN232.Lab1.CoffeeStore.Service.Models;
 
 namespace PRN232.Lab1.CoffeeStore.API.Controllers
 {
-    [Route("api/products")]
     [ApiController]
+    [Route("api/products")]
     public class ProductController : ControllerBase
     {
-        // Implement CRUD operations for Product entity here
+        private readonly ProductService _productService;
 
-        private readonly Data.Repositories.ProductRepository _productRepository;
-        public ProductController(Data.Repositories.ProductRepository productRepository)
+        public ProductController(ProductService productService)
         {
-            _productRepository = productRepository;
+            _productService = productService;
         }
-        //api get all 
+
+        // GET: api/product
         [HttpGet]
-        public IActionResult GetAllProducts()
+        public async Task<ActionResult<IEnumerable<ProductResponse>>> GetAllProducts()
         {
-            var products = _productRepository.GetAllProducts();
-            return Ok(products);
+            try
+            {
+                var products = await _productService.GetAllProductsAsync();
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+
         }
-        //api get by id
+
+        // GET: api/product/{id}
         [HttpGet("{id}")]
-        public IActionResult GetProduct(Guid id)
+        public async Task<ActionResult<ProductDetailsResponse>> GetProductById(Guid id)
         {
-            var product = _productRepository.GetProductById(id);
-            if (product == null)
+            try
             {
-                return NotFound();
+                var product = await _productService.GetProductByIdAsync(id);
+                return Ok(product);
             }
-            return Ok(product);
+            catch (KeyNotFoundException knfEx)
+            {
+                return NotFound(new { message = knfEx.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
-        //api create
+
+        // POST: api/product
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] Data.Entities.Product product)
+        public async Task<ActionResult<ProductResponse>> AddProduct([FromBody] ProductCreationRequest request)
         {
-            if (product == null)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            try
             {
-                return BadRequest();
+                var createdProduct = await _productService.AddProductAsync(request);
+
+                return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct);
             }
-            _productRepository.AddProduct(product);
-            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+
+            }
         }
-        //api update product details
+        // PUT: api/product/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(Guid id, Product product)
+        public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] ProductUpdationRequest request)
         {
-            var existingProduct = _productRepository.GetProductById(id);
-
-            if (existingProduct == null)
+            try
             {
-                return NotFound();
+                await _productService.UpdateProductAsync(id, request);
+                return NoContent();
             }
-            existingProduct.Name = product.Name;
-            existingProduct.Description = product.Description;
-            existingProduct.Price = product.Price;
-            existingProduct.CategoryId = product.CategoryId;
-
-            _productRepository.UpdateProduct(existingProduct);
-            return NoContent();
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
-        //api delete product
+        // DELETE: api/product/{id}
         [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(Guid id)
+        public async Task<IActionResult> DeleteProduct(Guid id)
         {
-            var existingProduct = _productRepository.GetProductById(id);
-            if (existingProduct == null)
+            try
             {
-                return NotFound();
+                await _productService.DeleteProductAsync(id);
+                return NoContent();
             }
-            _productRepository.DeleteProduct(id);
-            return NoContent();
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
     }
 }

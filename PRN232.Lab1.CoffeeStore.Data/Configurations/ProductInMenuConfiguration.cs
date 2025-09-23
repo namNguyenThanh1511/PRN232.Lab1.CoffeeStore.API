@@ -16,11 +16,11 @@ namespace PRN232.Lab1.CoffeeStore.Data.Configurations
             builder.Property(pm => pm.Quantity)
                 .IsRequired();
             builder.HasOne(pm => pm.Product)
-                .WithMany()
+                .WithMany(pm => pm.ProductInMenus)
                 .HasForeignKey(pm => pm.ProductId)
                 .OnDelete(DeleteBehavior.SetNull);
             builder.HasOne(pm => pm.Menu)
-                .WithMany()
+                .WithMany(m => m.ProductInMenus)
                 .HasForeignKey(pm => pm.MenuId)
                 .OnDelete(DeleteBehavior.SetNull);
         }

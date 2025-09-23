@@ -16,6 +16,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Configurations
                 .HasMaxLength(100);
             builder.Property(c => c.Description)
                 .HasMaxLength(500);
+
         }
     }
 }

@@ -6,7 +6,12 @@
         public string Name { get; set; }
         public double Price { get; set; }
         public string? Description { get; set; }
+        //fk
         public Guid? CategoryId { get; set; }
-        public virtual Category? Category { get; set; }
+        // Quan hệ N - 1
+        public Category Category { get; set; }
+
+        // Quan hệ N - N với Menu thông qua ProductInMenu
+        public ICollection<ProductInMenu> ProductInMenus { get; set; } = new List<ProductInMenu>();
     }
 }
