@@ -1,4 +1,4 @@
-﻿namespace PRN232.Lab1.CoffeeStore.Data.Entities
+﻿namespace PRN232.Lab2.CoffeeStore.Repositories.Entities
 {
     public class ProductInMenu
     {
@@ -9,6 +9,7 @@
 
         // Quan hệ N - 1
         public virtual Menu? Menu { get; set; }
+        // 1 product co the co trong nhieu menu
         public virtual Product? Product { get; set; }
     }
 }

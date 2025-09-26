@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PRN232.Lab2.CoffeeStore.Repositories;
 
@@ -11,9 +12,11 @@ using PRN232.Lab2.CoffeeStore.Repositories;
 namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 {
     [DbContext(typeof(CoffeStoreDbContext))]
-    partial class CoffeStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250923074241_Lab2-init")]
+    partial class Lab2init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,70 +52,70 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 353, DateTimeKind.Local).AddTicks(9804),
                             Description = "Coffee drinks like espresso, latte, cappuccino.",
                             Name = "Coffee"
                         },
                         new
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(478),
                             Description = "Black tea, green tea, and herbal teas.",
                             Name = "Tea"
                         },
                         new
                         {
                             Id = new Guid("33333333-3333-3333-3333-333333333333"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(490),
                             Description = "Fresh fruit and vegetable juices.",
                             Name = "Juice"
                         },
                         new
                         {
                             Id = new Guid("44444444-4444-4444-4444-444444444444"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(492),
                             Description = "Blended fruit smoothies with yogurt or milk.",
                             Name = "Smoothies"
                         },
                         new
                         {
                             Id = new Guid("55555555-5555-5555-5555-555555555555"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(495),
                             Description = "Cakes, breads, croissants, and pastries.",
                             Name = "Bakery"
                         },
                         new
                         {
                             Id = new Guid("66666666-6666-6666-6666-666666666666"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(497),
                             Description = "Fresh sandwiches with meats and veggies.",
                             Name = "Sandwich"
                         },
                         new
                         {
                             Id = new Guid("77777777-7777-7777-7777-777777777777"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(498),
                             Description = "Italian pasta dishes with different sauces.",
                             Name = "Pasta"
                         },
                         new
                         {
                             Id = new Guid("88888888-8888-8888-8888-888888888888"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(500),
                             Description = "Thin crust and deep dish pizzas.",
                             Name = "Pizza"
                         },
                         new
                         {
                             Id = new Guid("99999999-9999-9999-9999-999999999999"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(501),
                             Description = "Fresh and healthy salads.",
                             Name = "Salad"
                         },
                         new
                         {
                             Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(502),
                             Description = "Warm soups for all seasons.",
                             Name = "Soup"
                         });
@@ -146,7 +149,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6030),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Breakfast Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -154,7 +157,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6175),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Lunch Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -162,7 +165,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("dddddddd-dddd-dddd-dddd-dddddddddddd"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6177),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dinner Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -170,7 +173,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6201),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Drinks Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -178,7 +181,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("ffffffff-ffff-ffff-ffff-ffffffffffff"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6203),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dessert Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -186,7 +189,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("12121212-1212-1212-1212-121212121212"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6205),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Weekend Specials",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -194,7 +197,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("13131313-1313-1313-1313-131313131313"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6207),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Vegan Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -202,7 +205,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("14141414-1414-1414-1414-141414141414"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6209),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kids Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -210,7 +213,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("15151515-1515-1515-1515-151515151515"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6211),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Happy Hour Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -218,7 +221,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("16161616-1616-1616-1616-161616161616"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6212),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Seasonal Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -355,7 +358,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("17171717-1717-1717-1717-171717171717"),
                             CategoryId = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8215),
                             Description = "Strong black coffee",
                             IsActive = true,
                             Name = "Espresso",
@@ -365,7 +368,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("18181818-1818-1818-1818-181818181818"),
                             CategoryId = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8518),
                             Description = "Coffee with steamed milk",
                             IsActive = true,
                             Name = "Latte",
@@ -375,7 +378,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("19191919-1919-1919-1919-191919191919"),
                             CategoryId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8522),
                             Description = "Refreshing green tea",
                             IsActive = true,
                             Name = "Green Tea",
@@ -385,7 +388,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("20202020-2020-2020-2020-202020202020"),
                             CategoryId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8550),
                             Description = "Fresh squeezed orange juice",
                             IsActive = true,
                             Name = "Orange Juice",
@@ -395,7 +398,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("21212121-2121-2121-2121-212121212121"),
                             CategoryId = new Guid("44444444-4444-4444-4444-444444444444"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8553),
                             Description = "Mixed berry smoothie",
                             IsActive = true,
                             Name = "Berry Smoothie",
@@ -405,7 +408,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("22222222-3333-4444-5555-666666666666"),
                             CategoryId = new Guid("55555555-5555-5555-5555-555555555555"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8556),
                             Description = "Buttery French pastry",
                             IsActive = true,
                             Name = "Croissant",
@@ -415,7 +418,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("23232323-2323-2323-2323-232323232323"),
                             CategoryId = new Guid("66666666-6666-6666-6666-666666666666"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8558),
                             Description = "Triple-decker sandwich",
                             IsActive = true,
                             Name = "Club Sandwich",
@@ -425,7 +428,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("24242424-2424-2424-2424-242424242424"),
                             CategoryId = new Guid("77777777-7777-7777-7777-777777777777"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8562),
                             Description = "Classic Italian pasta",
                             IsActive = true,
                             Name = "Spaghetti Bolognese",
@@ -435,7 +438,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("25252525-2525-2525-2525-252525252525"),
                             CategoryId = new Guid("88888888-8888-8888-8888-888888888888"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8566),
                             Description = "Cheese and tomato pizza",
                             IsActive = true,
                             Name = "Margherita Pizza",
@@ -445,7 +448,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         {
                             Id = new Guid("26262626-2626-2626-2626-262626262626"),
                             CategoryId = new Guid("99999999-9999-9999-9999-999999999999"),
-                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8568),
                             Description = "Salad with romaine lettuce and dressing",
                             IsActive = true,
                             Name = "Caesar Salad",

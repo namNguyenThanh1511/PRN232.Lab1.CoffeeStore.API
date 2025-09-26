@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PRN232.Lab2.CoffeeStore.Repositories;
 
@@ -11,9 +12,11 @@ using PRN232.Lab2.CoffeeStore.Repositories;
 namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 {
     [DbContext(typeof(CoffeStoreDbContext))]
-    partial class CoffeStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250923074627_Lab2-init2")]
+    partial class Lab2init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

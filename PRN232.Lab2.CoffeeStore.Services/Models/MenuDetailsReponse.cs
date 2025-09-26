@@ -1,4 +1,4 @@
-﻿namespace PRN232.Lab1.CoffeeStore.Service.Models
+﻿namespace PRN232.Lab2.CoffeeStore.Services.Models
 {
     public class MenuDetailsReponse : MenuResponse
     {

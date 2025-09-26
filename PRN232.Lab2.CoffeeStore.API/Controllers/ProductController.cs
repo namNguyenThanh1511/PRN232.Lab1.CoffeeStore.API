@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PRN232.Lab1.CoffeeStore.Service;
-using PRN232.Lab1.CoffeeStore.Service.Models;
+using PRN232.Lab2.CoffeeStore.Services.Models;
+using PRN232.Lab2.CoffeeStore.Services.ProductServices;
 
-namespace PRN232.Lab1.CoffeeStore.API.Controllers
+namespace PRN232.Lab2.CoffeeStore.API.Controllers
 {
     [ApiController]
     [Route("api/products")]
     public class ProductController : ControllerBase
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public ProductController(ProductService productService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }

@@ -1,35 +1,47 @@
-﻿using PRN232.Lab1.CoffeeStore.Data.Entities;
-using PRN232.Lab1.CoffeeStore.Data.Repositories;
-using PRN232.Lab1.CoffeeStore.Service.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PRN232.Lab2.CoffeeStore.Repositories.Entities;
+using PRN232.Lab2.CoffeeStore.Repositories.UnitOfWork;
+using PRN232.Lab2.CoffeeStore.Services.Models;
 
-namespace PRN232.Lab1.CoffeeStore.Service
+namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
-        public ProductService(ProductRepository productRepository)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ProductService(IUnitOfWork unitOfWork)
         {
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
 
-        //get all products
+        // get all products
         public async Task<IEnumerable<ProductResponse>> GetAllProductsAsync()
         {
-            var products = await _productRepository.GetAllProductsAsync();
-            //map to ProductResponse
+            var products = await _unitOfWork.Products.GetAllAsync(
+                q => q.Include(p => p.Category)
+                      .Include(p => p.ProductInMenus)
+                          .ThenInclude(pm => pm.Menu)
+            );
             return MapToProductResponseList(products);
         }
-        //get product by id
+
+        // get product by id
         public async Task<ProductResponse> GetProductByIdAsync(Guid id)
         {
-            var product = await _productRepository.GetProductByIdAsync(id);
+            var product = await _unitOfWork.Products.GetByIdAsync(
+                id,
+                q => q.Include(p => p.Category)
+                      .Include(p => p.ProductInMenus)
+                          .ThenInclude(pm => pm.Menu)
+            );
+
             if (product == null)
-            {
                 throw new KeyNotFoundException("Product not found");
-            }
+
             return MapToProductDetailsResponse(product);
         }
-        //add product
+
+        // add product
         public async Task<ProductResponse> AddProductAsync(ProductCreationRequest request)
         {
             Product product = new Product
@@ -39,34 +51,41 @@ namespace PRN232.Lab1.CoffeeStore.Service
                 Price = request.Price,
                 CategoryId = request.CategoryId
             };
-            product = await _productRepository.AddProductAsync(product);
+
+            product = await _unitOfWork.Products.AddAsync(product);
+            await _unitOfWork.SaveChangesAsync();
+
             return MapToProductResponse(product);
         }
-        //update product
+
+        // update product
         public async Task UpdateProductAsync(Guid id, ProductUpdationRequest request)
         {
-            var existingProduct = await _productRepository.GetProductByIdAsync(id);
+            var existingProduct = await _unitOfWork.Products.GetByIdAsync(id);
             if (existingProduct == null)
-            {
                 throw new Exception("Product not found");
-            }
+
             existingProduct.Name = request.Name ?? existingProduct.Name;
             existingProduct.Description = request.Description ?? existingProduct.Description;
             existingProduct.Price = request.Price ?? existingProduct.Price;
             existingProduct.CategoryId = request.CategoryId ?? existingProduct.CategoryId;
-            await _productRepository.UpdateProductAsync(existingProduct);
-        }
-        //delete product
-        public async Task DeleteProductAsync(Guid id)
-        {
-            var existingProduct = await _productRepository.GetProductByIdAsync(id);
-            if (existingProduct == null)
-            {
-                throw new Exception("Product not found");
-            }
-            await _productRepository.DeleteProductAsync(id);
+
+            _unitOfWork.Products.Update(existingProduct);
+            await _unitOfWork.SaveChangesAsync();
         }
 
+        // delete product
+        public async Task DeleteProductAsync(Guid id)
+        {
+            var existingProduct = await _unitOfWork.Products.GetByIdAsync(id);
+            if (existingProduct == null)
+                throw new Exception("Product not found");
+
+            _unitOfWork.Products.Remove(existingProduct);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
+        // mapping helpers
         private ProductResponse MapToProductResponse(Product product)
         {
             return new ProductResponse
@@ -81,7 +100,7 @@ namespace PRN232.Lab1.CoffeeStore.Service
 
         private IEnumerable<ProductResponse> MapToProductResponseList(IEnumerable<Product> products)
         {
-            return products.Select(p => MapToProductResponse(p));
+            return products.Select(MapToProductResponse);
         }
 
         private ProductDetailsResponse MapToProductDetailsResponse(Product product)
@@ -94,18 +113,16 @@ namespace PRN232.Lab1.CoffeeStore.Service
                 Price = product.Price,
                 Category = product.Category?.Name,
                 CategoryId = product.CategoryId,
-                Menus = product.ProductInMenus.Where(pm => pm.Menu != null).Select(pm => new MenuResponse
-                {
-                    Id = pm.Menu.Id,
-                    Name = pm.Menu.Name,
-                    FromDate = pm.Menu.FromDate,
-                    ToDate = pm.Menu.ToDate
-                }).ToList()
-
+                Menus = product.ProductInMenus
+                            .Where(pm => pm.Menu != null)
+                            .Select(pm => new MenuResponse
+                            {
+                                Id = pm.Menu.Id,
+                                Name = pm.Menu.Name,
+                                FromDate = pm.Menu.FromDate,
+                                ToDate = pm.Menu.ToDate
+                            }).ToList()
             };
         }
-
-
-
     }
 }

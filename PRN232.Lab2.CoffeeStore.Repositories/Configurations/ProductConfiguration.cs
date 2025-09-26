@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PRN232.Lab1.CoffeeStore.Data.Entities;
+using PRN232.Lab2.CoffeeStore.Repositories.Entities;
 
-namespace PRN232.Lab1.CoffeeStore.Data.Configurations
+namespace PRN232.Lab2.CoffeeStore.Repositories.Configurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PRN232.Lab1.CoffeeStore.Data;
+using PRN232.Lab2.CoffeeStore.Repositories;
 
 #nullable disable
 

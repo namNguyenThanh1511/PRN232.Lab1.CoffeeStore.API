@@ -1,18 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PRN232.Lab2.CoffeeStore.Repositories.Entities;
+using PRN232.Lab2.CoffeeStore.Services.MenuServices;
+using PRN232.Lab2.CoffeeStore.Services.Models;
 
-using PRN232.Lab1.CoffeeStore.Data.Entities;
-using PRN232.Lab1.CoffeeStore.Service;
-using PRN232.Lab1.CoffeeStore.Service.Models;
-
-namespace PRN232.Lab1.CoffeeStore.API.Controllers
+namespace PRN232.Lab2.CoffeeStore.API.Controllers
 {
     [Route("api/menus")]
     [ApiController]
     public class MenusController : ControllerBase
     {
-        private readonly MenuService _menuService;
+        private readonly IMenuService _menuService;
 
-        public MenusController(MenuService menuService)
+        public MenusController(IMenuService menuService)
         {
             _menuService = menuService;
         }

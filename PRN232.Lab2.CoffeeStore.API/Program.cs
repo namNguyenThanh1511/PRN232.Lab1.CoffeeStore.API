@@ -1,10 +1,9 @@
 
 using Microsoft.EntityFrameworkCore;
-using PRN232.Lab1.CoffeeStore.Data;
-using PRN232.Lab1.CoffeeStore.Data.Repositories;
-using PRN232.Lab1.CoffeeStore.Service;
+using PRN232.Lab2.CoffeeStore.API.Extensions;
+using PRN232.Lab2.CoffeeStore.Repositories;
 
-namespace PRN232.Lab1.CoffeeStore.API
+namespace PRN232.Lab2.CoffeeStore.API
 {
     public class Program
     {
@@ -27,14 +26,7 @@ namespace PRN232.Lab1.CoffeeStore.API
 
             var connectionString = builder.Configuration.GetConnectionString("CoffeeStoreDB");
 
-            builder.Services.AddScoped<ProductRepository>();
-            builder.Services.AddScoped<MenuRepository>();
-
-
-            builder.Services.AddScoped<ProductService>();
-            builder.Services.AddScoped<MenuService>();
-
-
+            builder.Services.AddApplicationServices(builder.Configuration);
 
             var app = builder.Build();
 
