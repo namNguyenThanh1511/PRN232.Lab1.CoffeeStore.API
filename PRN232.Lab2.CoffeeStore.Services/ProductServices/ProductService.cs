@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PRN232.Lab2.CoffeeStore.Repositories.Entities;
 using PRN232.Lab2.CoffeeStore.Repositories.UnitOfWork;
+using PRN232.Lab2.CoffeeStore.Services.Exceptions;
 using PRN232.Lab2.CoffeeStore.Services.Models;
 
 namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
@@ -15,7 +16,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
         }
 
         // get all products
-        public async Task<IEnumerable<ProductResponse>> GetAllProductsAsync()
+        public async Task<List<ProductResponse>> GetAllProductsAsync()
         {
             var products = await _unitOfWork.Products.GetAllAsync(
                 q => q.Include(p => p.Category)
@@ -26,7 +27,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
         }
 
         // get product by id
-        public async Task<ProductResponse> GetProductByIdAsync(Guid id)
+        public async Task<ProductDetailsResponse> GetProductByIdAsync(Guid id)
         {
             var product = await _unitOfWork.Products.GetByIdAsync(
                 id,
@@ -36,7 +37,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
             );
 
             if (product == null)
-                throw new KeyNotFoundException("Product not found");
+                throw new NotFoundException("Product not found");
 
             return MapToProductDetailsResponse(product);
         }
@@ -51,11 +52,10 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
                 Price = request.Price,
                 CategoryId = request.CategoryId
             };
-
             product = await _unitOfWork.Products.AddAsync(product);
             await _unitOfWork.SaveChangesAsync();
-
-            return MapToProductResponse(product);
+            var result = await _unitOfWork.Products.GetByIdAsync(product.Id, q => q.Include(p => p.Category));
+            return MapToProductResponse(result);
         }
 
         // update product
@@ -63,7 +63,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
         {
             var existingProduct = await _unitOfWork.Products.GetByIdAsync(id);
             if (existingProduct == null)
-                throw new Exception("Product not found");
+                throw new NotFoundException("Product not found");
 
             existingProduct.Name = request.Name ?? existingProduct.Name;
             existingProduct.Description = request.Description ?? existingProduct.Description;
@@ -79,7 +79,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
         {
             var existingProduct = await _unitOfWork.Products.GetByIdAsync(id);
             if (existingProduct == null)
-                throw new Exception("Product not found");
+                throw new NotFoundException("Product not found");
 
             _unitOfWork.Products.Remove(existingProduct);
             await _unitOfWork.SaveChangesAsync();
@@ -98,9 +98,9 @@ namespace PRN232.Lab2.CoffeeStore.Services.ProductServices
             };
         }
 
-        private IEnumerable<ProductResponse> MapToProductResponseList(IEnumerable<Product> products)
+        private List<ProductResponse> MapToProductResponseList(IEnumerable<Product> products)
         {
-            return products.Select(MapToProductResponse);
+            return products.Select(MapToProductResponse).ToList();
         }
 
         private ProductDetailsResponse MapToProductDetailsResponse(Product product)

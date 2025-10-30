@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PRN232.Lab2.CoffeeStore.API.Models;
 using PRN232.Lab2.CoffeeStore.Services.Models;
 using PRN232.Lab2.CoffeeStore.Services.ProductServices;
 
 namespace PRN232.Lab2.CoffeeStore.API.Controllers
 {
-    [ApiController]
     [Route("api/products")]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseController
     {
         private readonly IProductService _productService;
 
@@ -17,85 +17,42 @@ namespace PRN232.Lab2.CoffeeStore.API.Controllers
 
         // GET: api/product
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductResponse>>> GetAllProducts()
+        public async Task<ActionResult<ApiResponse<List<ProductResponse>>>> GetAllProducts()
         {
-            try
-            {
-                var products = await _productService.GetAllProductsAsync();
-                return Ok(products);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
 
+            var products = await _productService.GetAllProductsAsync();
+            return Ok(products);
         }
 
         // GET: api/product/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDetailsResponse>> GetProductById(Guid id)
+        public async Task<ActionResult<ApiResponse<ProductDetailsResponse>>> GetProductById(Guid id)
         {
-            try
-            {
-                var product = await _productService.GetProductByIdAsync(id);
-                return Ok(product);
-            }
-            catch (KeyNotFoundException knfEx)
-            {
-                return NotFound(new { message = knfEx.Message });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var product = await _productService.GetProductByIdAsync(id);
+            return Ok(product);
         }
 
         // POST: api/product
         [HttpPost]
-        public async Task<ActionResult<ProductResponse>> AddProduct([FromBody] ProductCreationRequest request)
+        public async Task<ActionResult<ApiResponse<ProductResponse>>> AddProduct([FromBody] ProductCreationRequest request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            try
-            {
-                var createdProduct = await _productService.AddProductAsync(request);
-
-                return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-
-            }
+            var createdProduct = await _productService.AddProductAsync(request);
+            return Created(createdProduct, "Tạo product thành công");
         }
         // PUT: api/product/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] ProductUpdationRequest request)
+        public async Task<ActionResult<ApiResponse>> UpdateProduct(Guid id, [FromBody] ProductUpdationRequest request)
         {
-            try
-            {
-                await _productService.UpdateProductAsync(id, request);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            await _productService.UpdateProductAsync(id, request);
+            return NoContent();
         }
 
         // DELETE: api/product/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(Guid id)
+        public async Task<ActionResult<ApiResponse>> DeleteProduct(Guid id)
         {
-            try
-            {
-                await _productService.DeleteProductAsync(id);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            await _productService.DeleteProductAsync(id);
+            return NoContent();
         }
     }
 }

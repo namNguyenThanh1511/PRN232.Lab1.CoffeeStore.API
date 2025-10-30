@@ -2,14 +2,12 @@
 {
     public class Payment
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public PaymentMethod Method { get; set; }
-        public string Status { get; set; }
+        public PaymentStatus Status { get; set; }
         public DateTime PaymentDate { get; set; }
         public decimal Amount { get; set; }
-        //fk
-        public Guid OrderId { get; set; }
-        // 1 - 1 với Order
+        public long OrderId { get; set; }
         public Order Order { get; set; }
     }
 
@@ -17,5 +15,12 @@
     {
         Cash,
         OnlineBanking,
+    }
+
+    public enum PaymentStatus
+    {
+        Pending,
+        Completed,
+        Failed,
     }
 }

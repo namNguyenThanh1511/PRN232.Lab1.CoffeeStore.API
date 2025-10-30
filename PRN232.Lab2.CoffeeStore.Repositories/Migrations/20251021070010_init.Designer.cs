@@ -9,11 +9,11 @@ using PRN232.Lab2.CoffeeStore.Repositories;
 
 #nullable disable
 
-namespace PRN232.Lab1.CoffeeStore.Data.Migrations
+namespace PRN232.Lab2.CoffeeStore.Repositories.Migrations
 {
     [DbContext(typeof(CoffeStoreDbContext))]
-    [Migration("20250923074241_Lab2-init")]
-    partial class Lab2init
+    [Migration("20251021070010_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,70 +52,70 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 353, DateTimeKind.Local).AddTicks(9804),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Coffee drinks like espresso, latte, cappuccino.",
                             Name = "Coffee"
                         },
                         new
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(478),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Black tea, green tea, and herbal teas.",
                             Name = "Tea"
                         },
                         new
                         {
                             Id = new Guid("33333333-3333-3333-3333-333333333333"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(490),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Fresh fruit and vegetable juices.",
                             Name = "Juice"
                         },
                         new
                         {
                             Id = new Guid("44444444-4444-4444-4444-444444444444"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(492),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Blended fruit smoothies with yogurt or milk.",
                             Name = "Smoothies"
                         },
                         new
                         {
                             Id = new Guid("55555555-5555-5555-5555-555555555555"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(495),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Cakes, breads, croissants, and pastries.",
                             Name = "Bakery"
                         },
                         new
                         {
                             Id = new Guid("66666666-6666-6666-6666-666666666666"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(497),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Fresh sandwiches with meats and veggies.",
                             Name = "Sandwich"
                         },
                         new
                         {
                             Id = new Guid("77777777-7777-7777-7777-777777777777"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(498),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Italian pasta dishes with different sauces.",
                             Name = "Pasta"
                         },
                         new
                         {
                             Id = new Guid("88888888-8888-8888-8888-888888888888"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(500),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Thin crust and deep dish pizzas.",
                             Name = "Pizza"
                         },
                         new
                         {
                             Id = new Guid("99999999-9999-9999-9999-999999999999"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(501),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Fresh and healthy salads.",
                             Name = "Salad"
                         },
                         new
                         {
                             Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(502),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Warm soups for all seasons.",
                             Name = "Soup"
                         });
@@ -149,7 +149,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6030),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Breakfast Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -157,7 +157,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6175),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Lunch Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -165,7 +165,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("dddddddd-dddd-dddd-dddd-dddddddddddd"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6177),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dinner Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -173,7 +173,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6201),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Drinks Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -181,7 +181,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("ffffffff-ffff-ffff-ffff-ffffffffffff"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6203),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dessert Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -189,7 +189,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("12121212-1212-1212-1212-121212121212"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6205),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Weekend Specials",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -197,7 +197,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("13131313-1313-1313-1313-131313131313"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6207),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Vegan Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -205,7 +205,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("14141414-1414-1414-1414-141414141414"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6209),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kids Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -213,7 +213,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("15151515-1515-1515-1515-151515151515"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6211),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Happy Hour Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -221,7 +221,7 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         new
                         {
                             Id = new Guid("16161616-1616-1616-1616-161616161616"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(6212),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Seasonal Menu",
                             ToDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -230,9 +230,11 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -243,32 +245,35 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid?>("paymentId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Order");
+                    b.HasIndex("PaymentId")
+                        .IsUnique()
+                        .HasFilter("[PaymentId] IS NOT NULL");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.OrderDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -285,39 +290,37 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetail");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Method")
-                        .HasColumnType("int");
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId")
-                        .IsUnique();
-
-                    b.ToTable("Payment");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", b =>
@@ -347,112 +350,125 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = new Guid("17171717-1717-1717-1717-171717171717"),
                             CategoryId = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8215),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Strong black coffee",
                             IsActive = true,
                             Name = "Espresso",
-                            Price = 2.5m
+                            Price = 10000m,
+                            Stock = 50
                         },
                         new
                         {
                             Id = new Guid("18181818-1818-1818-1818-181818181818"),
                             CategoryId = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8518),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Coffee with steamed milk",
                             IsActive = true,
                             Name = "Latte",
-                            Price = 3.0m
+                            Price = 3.0m,
+                            Stock = 40
                         },
                         new
                         {
                             Id = new Guid("19191919-1919-1919-1919-191919191919"),
                             CategoryId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8522),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Refreshing green tea",
                             IsActive = true,
                             Name = "Green Tea",
-                            Price = 1.8m
+                            Price = 1.8m,
+                            Stock = 70
                         },
                         new
                         {
                             Id = new Guid("20202020-2020-2020-2020-202020202020"),
                             CategoryId = new Guid("33333333-3333-3333-3333-333333333333"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8550),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Fresh squeezed orange juice",
                             IsActive = true,
                             Name = "Orange Juice",
-                            Price = 2.2m
+                            Price = 2.2m,
+                            Stock = 35
                         },
                         new
                         {
                             Id = new Guid("21212121-2121-2121-2121-212121212121"),
                             CategoryId = new Guid("44444444-4444-4444-4444-444444444444"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8553),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Mixed berry smoothie",
                             IsActive = true,
                             Name = "Berry Smoothie",
-                            Price = 3.5m
+                            Price = 3.5m,
+                            Stock = 25
                         },
                         new
                         {
                             Id = new Guid("22222222-3333-4444-5555-666666666666"),
                             CategoryId = new Guid("55555555-5555-5555-5555-555555555555"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8556),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Buttery French pastry",
                             IsActive = true,
                             Name = "Croissant",
-                            Price = 1.5m
+                            Price = 1.5m,
+                            Stock = 100
                         },
                         new
                         {
                             Id = new Guid("23232323-2323-2323-2323-232323232323"),
                             CategoryId = new Guid("66666666-6666-6666-6666-666666666666"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8558),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Triple-decker sandwich",
                             IsActive = true,
                             Name = "Club Sandwich",
-                            Price = 4.5m
+                            Price = 4.5m,
+                            Stock = 30
                         },
                         new
                         {
                             Id = new Guid("24242424-2424-2424-2424-242424242424"),
                             CategoryId = new Guid("77777777-7777-7777-7777-777777777777"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8562),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Classic Italian pasta",
                             IsActive = true,
                             Name = "Spaghetti Bolognese",
-                            Price = 6.5m
+                            Price = 6.5m,
+                            Stock = 20
                         },
                         new
                         {
                             Id = new Guid("25252525-2525-2525-2525-252525252525"),
                             CategoryId = new Guid("88888888-8888-8888-8888-888888888888"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8566),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Cheese and tomato pizza",
                             IsActive = true,
                             Name = "Margherita Pizza",
-                            Price = 7.0m
+                            Price = 7.0m,
+                            Stock = 15
                         },
                         new
                         {
                             Id = new Guid("26262626-2626-2626-2626-262626262626"),
                             CategoryId = new Guid("99999999-9999-9999-9999-999999999999"),
-                            CreatedDate = new DateTime(2025, 9, 23, 14, 42, 39, 355, DateTimeKind.Local).AddTicks(8568),
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Salad with romaine lettuce and dressing",
                             IsActive = true,
                             Name = "Caesar Salad",
-                            Price = 5.0m
+                            Price = 5.0m,
+                            Stock = 45
                         });
                 });
 
@@ -558,16 +574,18 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -577,27 +595,49 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique()
+                        .HasFilter("[PhoneNumber] IS NOT NULL");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", b =>
                 {
                     b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.User", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", "Payment")
+                        .WithOne("Order")
+                        .HasForeignKey("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", "PaymentId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.OrderDetail", b =>
@@ -611,23 +651,12 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                     b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", b =>
-                {
-                    b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", "Order")
-                        .WithOne("Payment")
-                        .HasForeignKey("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", "OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", b =>
@@ -670,8 +699,12 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
 
-                    b.Navigation("Payment");
+            modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", b =>
+                {
+                    b.Navigation("Order")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", b =>

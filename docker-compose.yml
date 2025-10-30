@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -8,7 +9,16 @@ services:
       - MSSQL_SA_PASSWORD=Nam@15112003
       - MSSQL_PID=Evaluation
     ports:
-      - "1433:1433"
+      - "1432:1433"
+    networks:
+      - mynetwork
+
+  redis:
+    image: redis:latest
+    container_name: redisdocker
+    restart: always
+    ports:
+      - "6379:6379"
     networks:
       - mynetwork
 
@@ -19,10 +29,15 @@ services:
     container_name: coffeestoreapi
     depends_on:
       - sqlserver
+      - redis
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      # Nếu bạn dùng Redis trong appsettings.json hoặc cấu hình riêng,
+      # có thể thêm dòng dưới để API biết host Redis:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     ports:
-      - "8080:8080"
+      - "7000:8080"
     networks:
       - mynetwork
 

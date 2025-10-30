@@ -1,5 +1,6 @@
 ﻿using PRN232.Lab2.CoffeeStore.Repositories.Entities;
 using PRN232.Lab2.CoffeeStore.Repositories.UnitOfWork;
+using PRN232.Lab2.CoffeeStore.Services.Exceptions;
 using PRN232.Lab2.CoffeeStore.Services.Models;
 
 namespace PRN232.Lab2.CoffeeStore.Services.MenuServices
@@ -12,7 +13,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.MenuServices
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<MenuResponse>> GetAllMenusAsync()
+        public async Task<List<MenuResponse>> GetAllMenusAsync()
         {
             var menus = await _unitOfWork.Menus.GetAllAsync();
             return MapToMenuResponseList(menus);
@@ -50,7 +51,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.MenuServices
         public async Task UpdateMenuAsync(Guid id, MenuUpdationRequest request)
         {
             var existMenu = await _unitOfWork.Menus.GetByIdAsync(id);
-            if (existMenu == null) throw new KeyNotFoundException("Menu not found");
+            if (existMenu == null) throw new NotFoundException("Menu not found");
 
             existMenu.Name = request.Name ?? existMenu.Name;
             existMenu.FromDate = request.FromDate ?? existMenu.FromDate;
@@ -63,7 +64,7 @@ namespace PRN232.Lab2.CoffeeStore.Services.MenuServices
         public async Task DeleteMenuAsync(Guid id)
         {
             var existMenu = await _unitOfWork.Menus.GetByIdAsync(id);
-            if (existMenu == null) throw new KeyNotFoundException("Menu not found");
+            if (existMenu == null) throw new NotFoundException("Menu not found");
 
             _unitOfWork.Menus.Remove(existMenu);
             await _unitOfWork.SaveChangesAsync();
@@ -103,8 +104,8 @@ namespace PRN232.Lab2.CoffeeStore.Services.MenuServices
             };
         }
 
-        private IEnumerable<MenuResponse> MapToMenuResponseList(IEnumerable<Menu> menus) =>
-            menus.Select(m => MapToMenuResponse(m));
+        private List<MenuResponse> MapToMenuResponseList(IEnumerable<Menu> menus) =>
+            menus.Select(m => MapToMenuResponse(m)).ToList();
         #endregion
     }
 }

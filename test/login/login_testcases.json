@@ -1,0 +1,112 @@
+[
+    {
+        "TestCaseID":"TC01",
+        "TestName":"Login with valid email",
+        "Description":"User logs in successfully using email",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"nam@example.com\",\n  \"password\": \"123456\"\n}",
+        "ExpectedStatus":200,
+        "ExpectedResponse":"{\n  \"isSuccess\": true,\n  \"message\": \"Login successful\",\n  \"errors\": [],\n  \"data\": {\n    \"accessToken\": \"string\",\n    \"refreshToken\": \"string\",\n    \"accessTokenExpiry\": \"2025-10-28T08:20:15.867899Z\",\n    \"refreshTokenExpiry\": \"2025-11-04T07:20:15.867899Z\",\n    \"tokenType\": \"Bearer\"\n  }\n}",
+        "Notes":"Verify token structure"
+    },
+    {
+        "TestCaseID":"TC02",
+        "TestName":"Login with valid phone number",
+        "Description":"User logs in successfully using phone number",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"0937634399\",\n  \"password\": \"123456\"\n}",
+        "ExpectedStatus":200,
+        "ExpectedResponse":"{\n  \"isSuccess\": true,\n  \"message\": \"Login successful\",\n  \"errors\": [],\n  \"data\": {\n    \"accessToken\": \"string\",\n    \"refreshToken\": \"string\",\n    \"accessTokenExpiry\": \"2025-10-28T08:20:15.867899Z\",\n    \"refreshTokenExpiry\": \"2025-11-04T07:20:15.867899Z\",\n    \"tokenType\": \"Bearer\"\n  }\n}",
+        "Notes":"Verify both tokens exist"
+    },
+    {
+        "TestCaseID":"TC03",
+        "TestName":"Missing keyLogin",
+        "Description":"Return 400 when keyLogin is missing",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"password\": \"ValidPass123\"\n}",
+        "ExpectedStatus":400,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Dữ liệu không hợp lệ\",\n  \"errors\": [\n    {\n      \"message\": \"Email hoặc số điện thoại không được để trống\"\n    }\n  ]\n}",
+        "Notes":"Required field validation"
+    },
+    {
+        "TestCaseID":"TC04",
+        "TestName":"Missing password",
+        "Description":"Return 400 when password is missing",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"user@example.com\"\n}",
+        "ExpectedStatus":400,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Dữ liệu không hợp lệ\",\n  \"errors\": [\n    {\n      \"message\": \"Mật khẩu không được để trống\"\n    },\n    {\n      \"message\": \"Mật khẩu phải từ 6-100 ký tự\"\n    }\n  ]\n}",
+        "Notes":"Required field validation"
+    },
+    {
+        "TestCaseID":"TC05",
+        "TestName":"Invalid email format",
+        "Description":"Return 400 for invalid email format",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"invalid_email\",\n  \"password\": \"ValidPass123\"\n}",
+        "ExpectedStatus":400,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Vui lòng nhập đúng định dạng email hoặc số điện thoại\",\n  \"errors\": []\n}",
+        "Notes":"Regex validation"
+    },
+    {
+        "TestCaseID":"TC06",
+        "TestName":"Non-existent user",
+        "Description":"Return 404 when user not found",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"unknown@example.com\",\n  \"password\": \"SomePass123\"\n}",
+        "ExpectedStatus":404,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Tài khoản không tồn tại\",\n  \"errors\": []\n}",
+        "Notes":"User lookup"
+    },
+    {
+        "TestCaseID":"TC07",
+        "TestName":"Inactive user",
+        "Description":"Return 401 when account is locked or disabled",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"john@example.com\",\n  \"password\": \"123456\"\n}",
+        "ExpectedStatus":401,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Tài khoản đã bị vô hiệu hóa\",\n  \"errors\": []\n}",
+        "Notes":"Account status validation"
+    },
+    {
+        "TestCaseID":"TC08",
+        "TestName":"Incorrect password",
+        "Description":"Return 401 when password is incorrect",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"user@example.com\",\n  \"password\": \"WrongPass\"\n}",
+        "ExpectedStatus":401,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Không được phép truy cập\",\n  \"errors\": [\n    {\n      \"message\": \"Mật khẩu không chính xác\"\n    }\n  ]\n}",
+        "Notes":"Invalid credentials"
+    },
+    {
+        "TestCaseID":"TC09",
+        "TestName":"Empty fields",
+        "Description":"Return 400 when both fields are empty",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"\",\n  \"password\": \"\"\n}",
+        "ExpectedStatus":400,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Dữ liệu không hợp lệ\",\n  \"errors\": [\n    {\n      \"message\": \"Thông tin đăng nhập không được để trống\"\n    }\n  ]\n}",
+        "Notes":"Empty input validation"
+    },
+    {
+        "TestCaseID":"TC10",
+        "TestName":"Overlength keyLogin",
+        "Description":"Return 400 when keyLogin exceeds 255 chars",
+        "Method":"POST",
+        "Endpoint":"\/api\/auth\/login",
+        "RequestBody":"{\n  \"keyLogin\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com\",\n  \"password\": \"ValidPass123\"\n}",
+        "ExpectedStatus":400,
+        "ExpectedResponse":"{\n  \"isSuccess\": false,\n  \"message\": \"Dữ liệu không hợp lệ\",\n  \"errors\": [\n    {\n      \"message\": \"Độ dài không được vượt quá 255 ký tự\"\n    }\n  ]\n}",
+        "Notes":"Length validation"
+    }
+]

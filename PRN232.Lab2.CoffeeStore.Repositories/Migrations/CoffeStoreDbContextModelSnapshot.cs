@@ -8,7 +8,7 @@ using PRN232.Lab2.CoffeeStore.Repositories;
 
 #nullable disable
 
-namespace PRN232.Lab1.CoffeeStore.Data.Migrations
+namespace PRN232.Lab2.CoffeeStore.Repositories.Migrations
 {
     [DbContext(typeof(CoffeStoreDbContext))]
     partial class CoffeStoreDbContextModelSnapshot : ModelSnapshot
@@ -227,9 +227,11 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -240,32 +242,35 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid?>("paymentId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Order");
+                    b.HasIndex("PaymentId")
+                        .IsUnique()
+                        .HasFilter("[PaymentId] IS NOT NULL");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.OrderDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -282,39 +287,37 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetail");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Method")
-                        .HasColumnType("int");
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId")
-                        .IsUnique();
-
-                    b.ToTable("Payment");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", b =>
@@ -344,11 +347,14 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -359,7 +365,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Strong black coffee",
                             IsActive = true,
                             Name = "Espresso",
-                            Price = 2.5m
+                            Price = 10000m,
+                            Stock = 50
                         },
                         new
                         {
@@ -369,7 +376,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Coffee with steamed milk",
                             IsActive = true,
                             Name = "Latte",
-                            Price = 3.0m
+                            Price = 3.0m,
+                            Stock = 40
                         },
                         new
                         {
@@ -379,7 +387,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Refreshing green tea",
                             IsActive = true,
                             Name = "Green Tea",
-                            Price = 1.8m
+                            Price = 1.8m,
+                            Stock = 70
                         },
                         new
                         {
@@ -389,7 +398,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Fresh squeezed orange juice",
                             IsActive = true,
                             Name = "Orange Juice",
-                            Price = 2.2m
+                            Price = 2.2m,
+                            Stock = 35
                         },
                         new
                         {
@@ -399,7 +409,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Mixed berry smoothie",
                             IsActive = true,
                             Name = "Berry Smoothie",
-                            Price = 3.5m
+                            Price = 3.5m,
+                            Stock = 25
                         },
                         new
                         {
@@ -409,7 +420,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Buttery French pastry",
                             IsActive = true,
                             Name = "Croissant",
-                            Price = 1.5m
+                            Price = 1.5m,
+                            Stock = 100
                         },
                         new
                         {
@@ -419,7 +431,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Triple-decker sandwich",
                             IsActive = true,
                             Name = "Club Sandwich",
-                            Price = 4.5m
+                            Price = 4.5m,
+                            Stock = 30
                         },
                         new
                         {
@@ -429,7 +442,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Classic Italian pasta",
                             IsActive = true,
                             Name = "Spaghetti Bolognese",
-                            Price = 6.5m
+                            Price = 6.5m,
+                            Stock = 20
                         },
                         new
                         {
@@ -439,7 +453,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Cheese and tomato pizza",
                             IsActive = true,
                             Name = "Margherita Pizza",
-                            Price = 7.0m
+                            Price = 7.0m,
+                            Stock = 15
                         },
                         new
                         {
@@ -449,7 +464,8 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                             Description = "Salad with romaine lettuce and dressing",
                             IsActive = true,
                             Name = "Caesar Salad",
-                            Price = 5.0m
+                            Price = 5.0m,
+                            Stock = 45
                         });
                 });
 
@@ -555,18 +571,23 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRefreshTokenRevoked")
                         .HasColumnType("bit");
 
                     b.Property<string>("Password")
@@ -574,27 +595,49 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique()
+                        .HasFilter("[PhoneNumber] IS NOT NULL");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", b =>
                 {
                     b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.User", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", "Payment")
+                        .WithOne("Order")
+                        .HasForeignKey("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", "PaymentId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.OrderDetail", b =>
@@ -608,23 +651,12 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
                     b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", b =>
-                {
-                    b.HasOne("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", "Order")
-                        .WithOne("Payment")
-                        .HasForeignKey("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", "OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", b =>
@@ -667,8 +699,12 @@ namespace PRN232.Lab1.CoffeeStore.Data.Migrations
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
 
-                    b.Navigation("Payment");
+            modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Payment", b =>
+                {
+                    b.Navigation("Order")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PRN232.Lab2.CoffeeStore.Repositories.Entities.Product", b =>

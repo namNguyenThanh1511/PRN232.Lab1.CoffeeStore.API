@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
+    <PackageReference Include="payOS" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PRN232.Lab2.CoffeeStore.Repositories\PRN232.Lab2.CoffeeStore.Repositories.csproj" />
   </ItemGroup>
 

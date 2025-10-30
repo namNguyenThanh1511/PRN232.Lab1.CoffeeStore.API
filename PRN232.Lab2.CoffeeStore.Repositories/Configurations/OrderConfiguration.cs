@@ -13,6 +13,7 @@ namespace PRN232.Lab2.CoffeeStore.Repositories.Configurations
             builder.Property(o => o.OrderDate).IsRequired();
             builder.Property(o => o.TotalAmount).HasColumnType("decimal(18,2)").IsRequired();
             builder.Property(o => o.Status).IsRequired();
+            builder.Property(o => o.Status).HasConversion<string>();
             builder.Property(o => o.CreatedDate).IsRequired();
             // Quan hệ N - 1 với User (Customer)
             builder.HasOne(o => o.Customer)
@@ -22,7 +23,7 @@ namespace PRN232.Lab2.CoffeeStore.Repositories.Configurations
             // Quan hệ 1 - 1 với Payment
             builder.HasOne(o => o.Payment)
                    .WithOne(p => p.Order)
-                   .HasForeignKey<Order>(o => o.paymentId)
+                   .HasForeignKey<Order>(o => o.PaymentId)
                    .OnDelete(DeleteBehavior.SetNull); // Nếu Payment bị xóa, đặt paymentId thành null
             // Quan hệ 1 - N với OrderDetail (OrderItems)
             builder.HasMany(o => o.OrderItems)

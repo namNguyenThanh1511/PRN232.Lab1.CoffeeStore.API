@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PRN232.Lab2.CoffeeStore.Repositories.Entities;
+using PRN232.Lab2.CoffeeStore.API.Models;
+using PRN232.Lab2.CoffeeStore.Services.Exceptions;
 using PRN232.Lab2.CoffeeStore.Services.MenuServices;
 using PRN232.Lab2.CoffeeStore.Services.Models;
 
 namespace PRN232.Lab2.CoffeeStore.API.Controllers
 {
     [Route("api/menus")]
-    [ApiController]
-    public class MenusController : ControllerBase
+    public class MenusController : BaseController
     {
         private readonly IMenuService _menuService;
 
@@ -18,7 +18,7 @@ namespace PRN232.Lab2.CoffeeStore.API.Controllers
 
         // GET: api/menus
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MenuResponse>>> GetMenus()
+        public async Task<ActionResult<ApiResponse<List<MenuResponse>>>> GetMenus()
         {
             var menus = await _menuService.GetAllMenusAsync();
             return Ok(menus);
@@ -26,45 +26,29 @@ namespace PRN232.Lab2.CoffeeStore.API.Controllers
 
         // GET: api/menus/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Menu>> GetMenu(Guid id)
+        public async Task<ActionResult<ApiResponse<MenuDetailsReponse>>> GetMenu(Guid id)
         {
             var menu = await _menuService.GetMenuByIdAsync(id);
             if (menu == null)
             {
-                return NotFound();
+                throw new NotFoundException("Menu not found");
             }
-            return Ok(menu);
+            return Ok(menu, "Lấy menu thành công");
         }
 
         // POST: api/menus
         [HttpPost]
-        public async Task<ActionResult<MenuResponse>> PostMenu(MenuCreationRequest request)
+        public async Task<ActionResult<ApiResponse<MenuResponse>>> PostMenu(MenuCreationRequest request)
         {
-            if (request == null)
-                return BadRequest();
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-            return await _menuService.AddMenuAsync(request);
+            var result = await _menuService.AddMenuAsync(request);
+            return Created(result, "Tạo Menu thành công");
         }
 
         // PUT: api/menus/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMenu(Guid id, MenuUpdationRequest request)
+        public async Task<ActionResult<ApiResponse>> PutMenu(Guid id, MenuUpdationRequest request)
         {
-            try
-            {
-                await _menuService.UpdateMenuAsync(id, request);
-            }
-            catch (KeyNotFoundException knfEx)
-            {
-                return NotFound(knfEx.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _menuService.UpdateMenuAsync(id, request);
             return NoContent();
         }
 
@@ -72,18 +56,7 @@ namespace PRN232.Lab2.CoffeeStore.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMenu(Guid id)
         {
-            try
-            {
-                await _menuService.DeleteMenuAsync(id);
-            }
-            catch (KeyNotFoundException knfEx)
-            {
-                return NotFound(knfEx.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _menuService.DeleteMenuAsync(id);
             return NoContent();
         }
     }

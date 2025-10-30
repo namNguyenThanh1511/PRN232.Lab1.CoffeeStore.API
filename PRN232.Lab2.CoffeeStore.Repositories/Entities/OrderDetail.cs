@@ -2,9 +2,9 @@
 {
     public class OrderDetail
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         //FK
-        public Guid OrderId { get; set; }
+        public long OrderId { get; set; }
         //N - 1 , 1 order has many order details , 1 order detail belongs to 1 order
         public Order Order { get; set; }
         //FK

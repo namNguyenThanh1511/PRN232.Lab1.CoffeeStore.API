@@ -12,12 +12,9 @@ namespace PRN232.Lab2.CoffeeStore.Repositories.Configurations
             builder.Property(p => p.PaymentDate).IsRequired();
             builder.Property(p => p.Amount).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(p => p.Method).IsRequired().HasMaxLength(50);
+            builder.Property(p => p.Method).HasConversion<string>();
             builder.Property(p => p.Status).IsRequired().HasMaxLength(50);
-            // Configure one-to-one relationship with Order
-            builder.HasOne(p => p.Order)
-                   .WithOne(o => o.Payment)
-                   .HasForeignKey<Order>(o => o.paymentId)
-                   .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(p => p.Status).HasConversion<string>();
         }
     }
 }
