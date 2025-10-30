@@ -1,0 +1,112 @@
+name: Deploy ASP.NET Core to Windows EC2 with IIS Reverse Proxy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
+
+      - name: Publish app
+        run: dotnet publish -c Release -o ./publish
+
+      - name: Archive artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-app
+          path: ./publish
+
+  deploy:
+    name: Deploy to EC2 Windows Server
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download published artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: published-app
+          path: ./publish
+
+      - name: Deploy to EC2 via SSH
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          EC2_HOST: ${{ secrets.EC2_WINDOWS_IP }}
+          EC2_USER: ${{ secrets.EC2_WINDOWS_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+
+          echo "=== Connecting to EC2 Windows and deploying ==="
+          ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST powershell -Command "
+
+            Write-Host '=== Checking Docker ==='
+            if (!(Get-Command docker -ErrorAction SilentlyContinue)) {
+              Write-Host 'Installing Docker Desktop...'
+              choco install docker-desktop -y
+              Restart-Service docker
+              Start-Sleep -Seconds 10
+            } else {
+              Write-Host 'Docker is already installed.'
+            }
+
+            Write-Host '=== Checking Git ==='
+            if (!(Get-Command git -ErrorAction SilentlyContinue)) {
+              Write-Host 'Installing Git...'
+              choco install git -y
+            } else {
+              Write-Host 'Git is already installed.'
+            }
+
+            # Create deploy folder
+            if (!(Test-Path 'C:\\deploy')) {
+              New-Item -ItemType Directory -Force -Path 'C:\\deploy' | Out-Null
+            }
+
+            cd C:\\deploy
+
+            if (!(Test-Path 'myapp')) {
+              git clone https://github.com/${{ github.repository }} myapp
+            }
+
+            cd myapp
+            git pull origin main
+
+            Write-Host '=== Copy published app ==='
+            if (Test-Path '.\\publish') { Remove-Item -Recurse -Force .\\publish }
+            New-Item -ItemType Directory -Force -Path .\\publish | Out-Null
+            '$(Get-Content ./publish | Out-String)' | Out-File .\\publish
+
+            Write-Host '=== Run Docker Compose ==='
+            docker-compose -f docker-compose.yml down
+            docker-compose -f docker-compose.yml up -d --build
+
+            Write-Host '=== Verify running containers ==='
+            docker ps
+          "
+
+      - name: Deployment finished
+        run: echo "✅ Deployment completed successfully!"
