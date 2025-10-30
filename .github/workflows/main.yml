@@ -2,7 +2,7 @@ name: Deploy ASP.NET Core to Windows EC2 with IIS Reverse Proxy
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -60,51 +60,25 @@ jobs:
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
 
-          echo "=== Connecting to EC2 Windows and deploying ==="
-          ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST powershell -Command "
+          echo "=== Copy published files to EC2 ==="
+          scp -i private_key.pem -o StrictHostKeyChecking=no -r ./publish $EC2_USER@$EC2_HOST:/C:/deploy/publish
 
-            Write-Host '=== Checking Docker ==='
-            if (!(Get-Command docker -ErrorAction SilentlyContinue)) {
-              Write-Host 'Installing Docker Desktop...'
-              choco install docker-desktop -y
-              Restart-Service docker
-              Start-Sleep -Seconds 10
-            } else {
-              Write-Host 'Docker is already installed.'
-            }
-
-            Write-Host '=== Checking Git ==='
-            if (!(Get-Command git -ErrorAction SilentlyContinue)) {
-              Write-Host 'Installing Git...'
-              choco install git -y
-            } else {
-              Write-Host 'Git is already installed.'
-            }
-
-            # Create deploy folder
-            if (!(Test-Path 'C:\\deploy')) {
-              New-Item -ItemType Directory -Force -Path 'C:\\deploy' | Out-Null
-            }
-
+          echo "=== Connecting to EC2 and running Docker ==="
+          ssh -i private_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST powershell -Command "
+            Write-Host '=== Deploying on EC2 ==='
             cd C:\\deploy
-
-            if (!(Test-Path 'myapp')) {
-              git clone https://github.com/${{ github.repository }} myapp
+            if (!(Test-Path 'docker-compose.yml')) {
+              Write-Host 'No docker-compose.yml found, cloning repo...'
+              git clone https://github.com/${{ github.repository }} .
+            } else {
+              git pull origin main
             }
-
-            cd myapp
-            git pull origin main
-
-            Write-Host '=== Copy published app ==='
-            if (Test-Path '.\\publish') { Remove-Item -Recurse -Force .\\publish }
-            New-Item -ItemType Directory -Force -Path .\\publish | Out-Null
-            '$(Get-Content ./publish | Out-String)' | Out-File .\\publish
-
-            Write-Host '=== Run Docker Compose ==='
-            docker-compose -f docker-compose.yml down
-            docker-compose -f docker-compose.yml up -d --build
-
-            Write-Host '=== Verify running containers ==='
+            Write-Host '=== Replace publish folder ==='
+            if (Test-Path .\\publish) { Remove-Item -Recurse -Force .\\publish }
+            Move-Item C:\\deploy\\publish .\\publish
+            Write-Host '=== Restart Docker containers ==='
+            docker-compose down
+            docker-compose up -d --build
             docker ps
           "
 
