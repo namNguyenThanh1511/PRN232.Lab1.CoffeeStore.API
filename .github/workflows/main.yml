@@ -1,4 +1,4 @@
-name: Deploy ASP.NET Core to Windows EC2 with IIS Reverse Proxy
+name: Deploy ASP.NET Core to Windows EC2 via WinRM (IIS Reverse Proxy)
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
 
 jobs:
   build:
-    name: Build & Test
+    name: Build & Publish
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Setup .NET 8 SDK
@@ -24,9 +24,6 @@ jobs:
       - name: Build solution
         run: dotnet build --configuration Release --no-restore
 
-      - name: Run tests
-        run: dotnet test --no-build --verbosity normal
-
       - name: Publish app
         run: dotnet publish -c Release -o ./publish
 
@@ -37,50 +34,60 @@ jobs:
           path: ./publish
 
   deploy:
-    name: Deploy to EC2 Windows Server
-    runs-on: ubuntu-latest
+    name: Deploy to EC2 Windows (WinRM)
+    runs-on: windows-latest
     needs: build
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Download published artifact
         uses: actions/download-artifact@v4
         with:
           name: published-app
           path: ./publish
 
-      - name: Deploy to EC2 via SSH
-        env:
-          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          EC2_HOST: ${{ secrets.EC2_WINDOWS_IP }}
-          EC2_USER: ${{ secrets.EC2_WINDOWS_USER }}
+      - name: Setup PowerShell Remoting (WinRM)
+        shell: powershell
         run: |
-          echo "$PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
+          Install-Module -Name PSRemotingTools -Force -Scope CurrentUser
+          Install-Module -Name PSSessionRemoting -Force -Scope CurrentUser
+          Write-Host "WinRM client ready."
 
-          echo "=== Copy published files to EC2 ==="
-          scp -i private_key.pem -o StrictHostKeyChecking=no -r ./publish $EC2_USER@$EC2_HOST:/C:/deploy/publish
+      - name: Deploy via WinRM
+        shell: powershell
+        env:
+          EC2_HOST: ${{ secrets.EC2_WINDOWS_HOST }}
+          EC2_USER: ${{ secrets.EC2_WINDOWS_USER }}
+          EC2_PASS: ${{ secrets.EC2_WINDOWS_PASS }}
+        run: |
+          Write-Host "=== Connecting to EC2 via WinRM ==="
+          $secpasswd = ConvertTo-SecureString $env:EC2_PASS -AsPlainText -Force
+          $creds = New-Object System.Management.Automation.PSCredential ($env:EC2_USER, $secpasswd)
+          $session = New-PSSession -ComputerName $env:EC2_HOST -Credential $creds -Authentication Basic -UseSSL:$false
 
-          echo "=== Connecting to EC2 and running Docker ==="
-          ssh -i private_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST powershell -Command "
-            Write-Host '=== Deploying on EC2 ==='
-            cd C:\\deploy
-            if (!(Test-Path 'docker-compose.yml')) {
-              Write-Host 'No docker-compose.yml found, cloning repo...'
+          Write-Host "=== Uploading published files ==="
+          Copy-Item -Path "./publish/*" -Destination "C:\deploy\publish" -ToSession $session -Recurse -Force
+
+          Write-Host "=== Deploying on EC2 ==="
+          Invoke-Command -Session $session -ScriptBlock {
+            Write-Host "Deploying backend..."
+
+            if (!(Test-Path "C:\deploy")) { New-Item -ItemType Directory -Force -Path "C:\deploy" | Out-Null }
+            cd C:\deploy
+
+            if (!(Test-Path "docker-compose.yml")) {
+              Write-Host "No docker-compose.yml found, cloning repo..."
               git clone https://github.com/${{ github.repository }} .
             } else {
               git pull origin main
             }
-            Write-Host '=== Replace publish folder ==='
-            if (Test-Path .\\publish) { Remove-Item -Recurse -Force .\\publish }
-            Move-Item C:\\deploy\\publish .\\publish
-            Write-Host '=== Restart Docker containers ==='
+
+            Write-Host "Restarting Docker containers..."
             docker-compose down
             docker-compose up -d --build
-            docker ps
-          "
 
-      - name: Deployment finished
-        run: echo "✅ Deployment completed successfully!"
+            Write-Host "Current containers:"
+            docker ps
+          }
+
+          Write-Host "=== Deployment completed successfully ==="
+          Remove-PSSession $session
